@@ -1,0 +1,66 @@
+
+@model BookLibrary.ViewModel.BookViewModel
+
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<div>
+    <div>
+        <h2>Create</h2>
+        <hr/>
+    </div>
+    <form method="post" asp-action="PostCreate" enctype="multipart/form-data">
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="currentBook.Title">Название</label>
+            <div class="col-sm-8">
+                <input asp-for="currentBook.Title" 
+                    type="text" 
+                    class="form-control"
+                    name="currentBook.title"
+                    required
+                    pattern=".{3,}"
+                    title="Название книги должно содержать от 3 символов" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="currentBook.Author">Автор</label>
+            <div class="col-sm-8">
+                <textarea asp-for="currentBook.Author"
+                          class="form-control"
+                          name="currentBook.author"
+                          required>
+                </textarea>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="currentBook.Description">Описание</label>
+            <div class="col-sm-8">
+                <textarea asp-for="currentBook.Description"
+                    class="form-control"
+                    name="currentBook.description">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" >Файл</label>
+            <div class="col-sm-8">
+                <div class="offset-sm-1 col-sm-4 d-grid">
+                    <input type="file" name="FileUpload" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button class="btn btn-success btn-sm" type="submit">Создать</button>
+            </div>
+            <div class="offset-sm-1 col-sm-3 d-grid">
+                <a class="btn btn-secondary btn-sm" asp-controller="Book" asp-action="Books">Отменить</a>
+            </div>
+        </div>
+
+    </form>
+
+</div>

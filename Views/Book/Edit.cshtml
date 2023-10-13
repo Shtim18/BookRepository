@@ -1,0 +1,48 @@
+
+@model BookLibrary.ViewModel.BookViewModel
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<div>
+    <div>
+        <h2>Edit task: @Model.currentBook.Title</h2>
+        <hr/>
+    </div>
+    <form method="post" asp-action="PostUpdate">
+        <input type="hidden" asp-for="currentBook.Id" name="currentBook.id" value="@Model.currentBook.Id" />
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="currentBook.Title">Название</label>
+            <div class="col-sm-6">
+                <input asp-for="currentBook.Title"
+                       type="text"
+                       class="form-control"
+                       name="currentBook.title"
+                       required
+                       pattern=".{3,}"
+                       title="Название книги должно содержать от 3 символов" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="currentBook.Author">Автор</label>
+            <div class="col-sm-6">
+                <textarea asp-for="currentBook.Author" class="form-control" name="currentBook.author" required></textarea>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="currentBook.Description">Описание</label>
+            <div class="col-sm-6">
+                <textarea asp-for="currentBook.Description" class="form-control" name="currentBook.description"></textarea>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button class="btn btn-success btn-sm" type="submit">Изменить</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-secondary btn-sm" asp-controller="Book" asp-action="Books">Отменить</a>
+            </div>
+        </div>
+    </form>
+</div>

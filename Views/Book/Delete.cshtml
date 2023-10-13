@@ -1,0 +1,47 @@
+@model BookLibrary.Models.Book
+
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<div>
+    <div>
+        <h2>Delete</h2>
+        <hr/>
+    </div>
+    <form method="post" asp-action="PostDelete">
+         <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="Id">Id</label>
+            <div class="col-sm-6">
+                <input asp-for="Id" type="text" value="@Model.Id" readonly class="form-control" name="id"/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="Title">Название</label>
+            <div class="col-sm-6">
+                <input asp-for="Title" type="text" value="@Model.Title" readonly class="form-control" name="title"/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="Author">Автор</label>
+            <div class="col-sm-6">
+                <input asp-for="Author" type="text" value="@Model.Author" readonly class="form-control" name="author" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label" asp-for="Description">Описание</label>
+            <div class="col-sm-6">
+                <textarea asp-for="Description" readonly class="form-control" name="description">value="@Model.Description"</textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-secondary btn-sm" asp-controller="Book" asp-action="Books">Отменить</a>
+            </div>
+        </div>
+    </form>
+</div>

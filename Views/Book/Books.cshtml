@@ -1,0 +1,52 @@
+@model IEnumerable<BookLibrary.Models.Book>
+
+
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div class="mt-2">
+    <div>
+        <h2>Библиотека книг</h2>
+        <hr/>
+    </div>
+    <div>
+        <a class="btn btn-primary btn" asp-controller="Book" asp-action="Create">Новая книга</a>
+    </div>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Название</td>
+                <td>Автор</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model.ToList())
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Author</td>
+                        <td>
+                            <a type="button" class="btn btn-sm btn-outline-primary" asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">Посмотреть</a>
+                            <a type="button" class="btn btn-sm btn-outline-success" asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id">Изменить</a>
+                            <a type="button" class="btn btn-sm btn-outline-info" asp-controller="Book" asp-action="Download" asp-route-id="@item.Id">Скачать</a>
+                            <a type="button" class="btn btn-sm btn-outline-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                        </td>
+                    </tr>
+
+                }
+            }
+            
+        </tbody>
+    </table>
+
+
+
+    
+</div>

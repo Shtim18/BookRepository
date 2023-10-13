@@ -1,0 +1,25 @@
+@model BookLibrary.Models.Book
+
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<div class="container card p-2 shadow">
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div class="container-fluid py-5">
+            <div class="text-center">
+                <h1 class="display-5 fw-bold">@Model.Title</h1>
+                <p class="m-5 fs-4">@Model.Author</p>
+                <p class="m-5 fs-4">@Model.Description</p>
+            </div>
+        </div>
+        <a type="button" class="w-100 btn btn-lg btn-outline-primary" asp-controller="Book" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+    </div>
+    <div>
+        <a type="button" class="w-100 btn btn-lg btn-outline-primary" asp-controller="Book" asp-action="Download" asp-route-id="@Model.Id">Скачать</a>
+    </div>
+
+
+    <hr/>
+ 
+</div>
